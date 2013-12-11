@@ -275,6 +275,11 @@ namespace EmailModule
             var assembly = GenerateAssembly(compliableTemplates);
 
             var result = templates.Select(x => new KeyValuePair<string, Type>(x.ContentType, assembly.GetType(NamespaceName + "." + x.TemplateName, true, false))).ToList();
+
+            Invariant.IsNotEmpty(
+                result,
+                string.Format(CultureInfo.CurrentUICulture, "Templates could not be loaded, check the name supplied matches the filename, missing template was: {0}", templateName));
+
             result.Add(new KeyValuePair<string, Type>(String.Format("{0}.dll", assembly.FullName.Split(',')[0]),
                 result.FirstOrDefault().Value));
             return result;

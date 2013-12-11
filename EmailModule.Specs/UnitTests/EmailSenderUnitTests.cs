@@ -77,9 +77,9 @@ namespace EmailModule.Specs.UnitTests
             var email = new MyEmailStructure { To = "user@site.com", };
 
             // Act && Assert
-            var msg = Assert.Throws<ArgumentException>( () =>subsystem.SendMail("MyEmailStructure", email)).Message;
+            var msg = Assert.Throws<ArgumentException>( () => subsystem.SendMail("DoesNotExist", email)).Message;
             Assert.IsTrue(msg.Contains("check the name supplied matches the filename"), String.Format("Message actually was: {0}", msg));
-            Assert.IsTrue(msg.Contains("MyEmailStructure"), String.Format("Message actually was: {0}", msg));
+            Assert.IsTrue(msg.Contains("DoesNotExist"), String.Format("Message actually was: {0}", msg));
         }
 
         [Test]
