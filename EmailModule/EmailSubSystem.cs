@@ -1,3 +1,5 @@
+using System.IO;
+
 namespace EmailModule
 {
     public class EmailSubsystem : IEmailSystem
@@ -25,6 +27,11 @@ namespace EmailModule
             var mail = TemplateEngine.Execute(tempalteName, model);
 
             Sender.Send(mail);
+
+            if (File.Exists(mail.GeneratedAssemblyName))
+            {
+                File.Delete(mail.GeneratedAssemblyName);
+            }
         }
     }
 }

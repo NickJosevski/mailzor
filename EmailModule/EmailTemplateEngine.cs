@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Security.Cryptography.X509Certificates;
 
 namespace EmailModule
 {
@@ -58,7 +59,7 @@ namespace EmailModule
 
             Invariant.IsNotEmpty(templates, string.Format(CultureInfo.CurrentUICulture, "was unable to find a matching templates with name: \"{0}\" .", templateName));
 
-            foreach (var pair in templates)
+            foreach (var pair in templates.Where(x => !x.Key.EndsWith(".dll")))
             {
                 pair.Value.SetModel(WrapModel(model));
                 pair.Value.Execute();
@@ -117,6 +118,9 @@ namespace EmailModule
             set(ContentTypes.Text, body => { mail.TextBody = body; });
             set(ContentTypes.Html, body => { mail.HtmlBody = body; });
             set(string.Empty, null);
+
+            var generatedAssemblyInfo = templates.FirstOrDefault(x => x.Key.EndsWith(".dll"));
+            mail.GeneratedAssemblyName = generatedAssemblyInfo.Key;
 
             return mail;
         }
@@ -271,7 +275,10 @@ namespace EmailModule
 
             var assembly = GenerateAssembly(compliableTemplates);
 
-            return templates.Select(x => new KeyValuePair<string, Type>(x.ContentType, assembly.GetType(NamespaceName + "." + x.TemplateName, true, false))).ToList();
+            var result = templates.Select(x => new KeyValuePair<string, Type>(x.ContentType, assembly.GetType(NamespaceName + "." + x.TemplateName, true, false))).ToList();
+            result.Add(new KeyValuePair<string, Type>(String.Format("{0}.dll", assembly.FullName.Split(',')[0]),
+                result.FirstOrDefault().Value));
+            return result;
         }
     }
 }
