@@ -48,7 +48,6 @@ namespace EmailModule.Specs.UnitTests
 
             builder.Register(
                 c => new EmailSubsystem(
-                        "sender@your-site.com",
                         c.Resolve<IEmailTemplateEngine>(),
                         c.Resolve<IEmailSender>()))
                     .As<IEmailSystem>();

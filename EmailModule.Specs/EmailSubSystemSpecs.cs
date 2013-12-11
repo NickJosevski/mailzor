@@ -18,7 +18,7 @@ namespace EmailModule.Specs
             templateEngine = new Mock<IEmailTemplateEngine>();
             sender = new Mock<IEmailSender>();
 
-            subSystem = new EmailSubsystem("me@myself.com", templateEngine.Object, sender.Object);
+            subSystem = new EmailSubsystem(templateEngine.Object, sender.Object);
         };
 
         Because of = () =>
