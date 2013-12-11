@@ -104,6 +104,8 @@ Using an Autofac module (or just using this registration code in your compositio
 
 ## Change Log
 
+ Version 1.0.0.12 - Deleting temp generated DLLs [(issue #4)]( https://github.com/NickJosevski/mailzor/pull/4 )
+ 
  Version 1.0.0.11 - Added operational default email support
  
  Version 1.0.0.10 - Stablised via ilmerge
