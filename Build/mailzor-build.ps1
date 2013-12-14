@@ -18,7 +18,6 @@ Properties {
     $vs_project_dir
 }
 include .\psake_ext.ps1
-Import-Module .\teamcity.psm1
 
 FormatTaskName (("-"*25) + "[{0}]" + ("-"*25))
 

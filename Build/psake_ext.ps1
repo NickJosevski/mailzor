@@ -79,8 +79,8 @@ param(
     [string]$snkPublicKeyToken = $(throw "snkPublicKeyToken is a required parameter.")
 )
   $asmInfo = "// --------------------------------------------------------------------------------------------------------------------
-// <copyright file=""globalAssemblyInfo.cs"" company=""AdCast Group Pty Ltd"">
-//   © 2012 AdCast Group Pty Ltd
+// <copyright file=""globalAssemblyInfo.cs"" company=""Picnic Software Pty Ltd"">
+//   © 2012 Picnic Software Pty Ltd
 // </copyright>
 // <summary>
 //   globalAssemblyInfo.cs
@@ -101,8 +101,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyInformationalVersionAttribute(""$version"")]
 [assembly: AssemblyFileVersionAttribute(""$version"")]
 [assembly: AssemblyDelaySignAttribute(false)]
-[assembly: InternalsVisibleTo(""Tests.Slow.Daedalus, PublicKey=$snkPublicKeyToken"")]
-[assembly: InternalsVisibleTo(""Tests.Unit.Daedalus, PublicKey=$snkPublicKeyToken"")]"
+[assembly: InternalsVisibleTo(""Tests.Slow.Daedalus"")]
+[assembly: InternalsVisibleTo(""Tests.Daedalus"")]"
 
 	$dir = [System.IO.Path]::GetDirectoryName($file)
 	if ([System.IO.Directory]::Exists($dir) -eq $false)
@@ -125,10 +125,10 @@ param(
   <metadata xmlns=""http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"">
     <id>AdCast</id>
     <version>$version</version>
-    <authors>AdCast Group Pty Ltd</authors>
+    <authors>Picnic Software Pty Ltd</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>AdCast Marketing Automation</description>
-    <summary>AdCast Marketing Automation</summary>
+    <summary>Picnic Software</summary>
     <language>en-US</language>
     <tags>AdCast</tags>
     <projectUrl>https://svn.adcastgroup.com/svn/repos/AdCast/trunk</projectUrl>
