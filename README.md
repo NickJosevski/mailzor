@@ -19,7 +19,7 @@ Is about making it easier to get up and running, via a nuget package and support
 
 ## NuGet
 
- **Current Version: 1.0.0.11**
+ **Current Version: 1.0.0.12**
  
  Get it from [nuget.org/packages/mailzor](https://nuget.org/packages/mailzor) or via Package Manager Console
  
@@ -37,7 +37,7 @@ Have [smpt4dev](http://smtp4dev.codeplex.com/) running or configure it to a real
 
 ## Building from source
 
-Run build.bat which calls out to a [psake](http://en.wikipedia.org/wiki/Psake) script `mailzor-build.ps1`. The dependant Razor assembly will be ilmerged as part of the build.
+Run build.ps1 from base folder which will call out to a [psake](http://en.wikipedia.org/wiki/Psake) script `mailzor-build.ps1`. The dependant Razor assembly will be ilmerged as part of the build.
 
 
 # Usage
