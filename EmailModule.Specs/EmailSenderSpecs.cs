@@ -1,3 +1,6 @@
+using System.IO;
+using System.Linq;
+
 namespace EmailModule.Specs
 {
     using System;
@@ -39,6 +42,13 @@ namespace EmailModule.Specs
         Because of = () => sender.Send(new Email { From = "me@myself.com" });
 
         it should_send_mail = () => client.Verify();
+        
+        it should_have_deleted_tempfile = () => 
+        {
+        	var tempFileCount = Directory.GetFiles(".").Where(x => x.StartsWith(@".\TempCompiledTemplates")).Count();
+        	tempFileCount.ShouldNotBeTheSameAs(0);
+        };
+        	
     }
 
     [Subject(typeof(EmailSender))]
