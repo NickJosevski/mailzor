@@ -1,3 +1,7 @@
+using System.IO;
+using System.Linq;
+using Machine.Specifications.Model;
+
 namespace EmailModule.Specs
 {
     using System;
@@ -99,6 +103,15 @@ namespace EmailModule.Specs
             email.TextBody.ShouldContain(EmailTemplateExecutingBehavior.Password);
             email.TextBody.ShouldContain(EmailTemplateExecutingBehavior.LogOnUrl);
         };
+        
+        Cleanup delete_temporary_assebmlies = () =>
+        {
+        	foreach (var fn in Directory.GetFiles(".").Where(x => x.StartsWith(@".\TempCompiledTemplates")).ToList())
+        	{
+           		File.Delete(fn);
+        	}
+        };
+        
     }
 
     [Subject(typeof(EmailTemplateEngine))]
@@ -123,8 +136,16 @@ namespace EmailModule.Specs
             email.HtmlBody.ShouldContain(EmailTemplateExecutingBehavior.Password);
             email.HtmlBody.ShouldContain(EmailTemplateExecutingBehavior.LogOnUrl);
         };
-
+        
         it should_not_set_text_body = () => email.TextBody.ShouldBeNull();
+        
+        Cleanup delete_temporary_assebmlies = () =>
+        {
+        	foreach (var fn in Directory.GetFiles(".").Where(x => x.StartsWith(@".\TempCompiledTemplates")).ToList())
+        	{
+           		File.Delete(fn);
+        	}
+        };
     }
 
     [Subject(typeof(EmailTemplateEngine))]
@@ -151,5 +172,14 @@ namespace EmailModule.Specs
         };
 
         it should_not_set_html_body = () => email.HtmlBody.ShouldBeNull();
+        
+        Cleanup delete_temporary_assebmlies = () =>
+        {
+        	foreach (var fn in Directory.GetFiles(".").Where(x => x.StartsWith(@".\TempCompiledTemplates")).ToList())
+        	{
+           		File.Delete(fn);
+        	}
+        };
     }
+
 }
