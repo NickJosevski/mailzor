@@ -1,5 +1,7 @@
 # mailzor
 
+[![Build status](https://ci.appveyor.com/api/projects/status/s6owhetfd8vi9gww)](https://ci.appveyor.com/project/NickJosevski/mailzor)
+
 Mailzor is a basic utility library to help generate and send emails using the Razor view engine to populate email templates, designed to be quickly pluggable into your .NET app.
 
 The original idea for this is from [Kazi Manzur Rashid](https://twitter.com/manzurrashid), with the...
