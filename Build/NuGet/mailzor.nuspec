@@ -3,13 +3,15 @@
   <metadata>
     <id>mailzor</id>
 	<title>mailzor</title>
-    <version>1.0.0.12</version>
+    <version>1.0.0.13</version>
 	<projectUrl>http://nickjosevski.github.com/mailzor</projectUrl>
     <authors>Kazi Manzur Rashid, Nick Josevski</authors>
     <language>en-US</language>
     <description>A basic razor template building and email sending library. Simply provide a path location to .cshtml files and your mail server configuration information.</description>
     <dependencies>
     </dependencies> 
+	<iconUrl>https://nickjosevski.files.wordpress.com/2014/06/mailzor-icon.png</iconUrl>
+	<tags>email delivery razor html template text mail merge</tags>
   </metadata>
   <files>
     <file src="..\Output\EmailModule.dll" target="lib\net40" />
